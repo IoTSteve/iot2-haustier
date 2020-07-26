@@ -3,8 +3,8 @@
         <strong>Connected: {{connected}}</strong><br><br><br>
         <div class="half">
             <h4>Presets</h4>
-            <button v-on:click="lichtAnschalten()" :disabled="!connected || !amIActive">Licht An</button>
-            <button v-on:click="lichtAusschalten()" :disabled="!connected || !amIActive">Licht Aus</button>
+            <button v-on:click="lichtAnschalten()" :disabled="!connected || !amIActive">GO!</button>
+            <button v-on:click="lichtAusschalten()" :disabled="!connected || !amIActive">Stop</button>
             <button v-on:click="buttonClick(3)" :disabled="!connected || !amIActive">Position 3</button><br>
         </div>
         <div class="half">
@@ -28,10 +28,10 @@
                 this.$socket.emit('preset', preset);
             },
             lichtAnschalten: function () {
-                this.$socket.emit('lightOn');
+                this.$socket.emit('driveForward');
             },
             lichtAusschalten: function () {
-                this.$socket.emit('lightOff');
+                this.$socket.emit('Stop');
             }
         },
         sockets: {
